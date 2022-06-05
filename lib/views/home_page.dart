@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:switcher/core/switcher_size.dart';
 import 'package:switcher/switcher.dart';
@@ -122,8 +123,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget tempContainer(context, width, themeProvider) {
     return Stack(children: <Widget>[
       Container(
+        margin: EdgeInsets.only(top: 10.0),
         width: width,
-        height: 220,
+        height: 250,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100.0),
             gradient: LinearGradient(
@@ -143,7 +145,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       Positioned(
         left: width / 4,
         child: Container(
-          height: 25.0,
+          height: 30.0,
           width: width / 2.5,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
@@ -153,13 +155,56 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: Text(
             TodayDate().getTodayDate(),
             style: headingStyle.copyWith(
-                fontSize: 19.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold,
                 color:
                     themeProvider.isLightTheme ? Colors.white : Colors.black),
           )),
         ),
-      )
+      ),
+      Padding(
+          padding: EdgeInsets.only(top: 45.0, left: 20),
+          child: Text(
+            '32',
+            style: TextStyle(fontSize: 150.0),
+          )),
+      Padding(
+        padding: EdgeInsets.only(
+          left: 190.0,
+          top: 70.0,
+        ),
+        child: Container(
+          width: 25.0,
+          height: 15.0,
+          decoration: BoxDecoration(
+            border: Border.all(
+                width: 2.0,
+                color:
+                    themeProvider.isLightTheme ? Colors.black : Colors.white),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(
+          left: width / 1.7,
+          top: 80.0,
+        ),
+        child: Text(
+          'Sunny'.toUpperCase(),
+          textScaleFactor: 2.0,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Ubuntu',
+          ),
+        ),
+      ),
+      Padding(
+        padding: EdgeInsets.only(top: width / 3.5, left: width / 2.5),
+        child: Lottie.network(
+            'https://assets6.lottiefiles.com/packages/lf20_64okjrr7.json',
+            width: 220.0),
+      ),
     ]);
   }
 }
