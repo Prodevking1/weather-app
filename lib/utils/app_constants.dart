@@ -18,4 +18,5 @@ class AppStyle {
 
 class RessourcesPath {
   static String sunnyLottie = 'assets/lotties/sunny.json';
+  static String sunCycle = 'assets/lotties/sun_cycle.json';
 }

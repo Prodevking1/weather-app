@@ -11,18 +11,18 @@ import 'package:switcher/switcher.dart';
 import 'package:weather_app/models/date_model.dart';
 import 'package:weather_app/providers/theme_provider.dart';
 import 'package:weather_app/utils/app_constants.dart';
-import 'package:weather_app/views/week_forecast.dart';
 
 import 'widgets/curved_line.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+class WeekForecast extends StatefulWidget {
+  const WeekForecast({Key key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<WeekForecast> createState() => _WeekForecastState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _WeekForecastState extends State<WeekForecast>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -30,31 +30,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     return Scaffold(
       body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 50.0,
-                ),
-                header(context),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                tempContainer(context, size.width, themeProvider),
-                infoContainer(context),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                sunContainer(),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                navText(context),
-              ],
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: <Widget>[
+            const SizedBox(
+              height: 50.0,
             ),
-          )),
+            header(context),
+            const SizedBox(
+              height: 40.0,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -241,11 +229,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 children: <Widget>[
                   Icon(FontAwesomeIcons.wind,
                       color: HexColor(AppColors.weatherICons)),
-                  const Text(
-                    '9km/h',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-                  ),
+                  const Text('9km/h',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   Text('Wind',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -261,7 +246,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       color: HexColor(AppColors.weatherICons)),
                   const Text('30%',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 18.0)),
+                        fontWeight: FontWeight.bold,
+                      )),
                   Text(
                     'Humidity',
                     style: TextStyle(
@@ -279,8 +265,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       color: HexColor(AppColors.weatherICons)),
                   const Text(
                     '1008',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text('Pressure',
                       style: TextStyle(
@@ -382,27 +367,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
       ],
-    );
-  }
-
-  Widget navText(context) {
-    return GestureDetector(
-      onTap: (() => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => WeekForecast()))),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Text(
-            '7 Next days',
-            style:
-                GoogleFonts.lato(fontSize: 18.0, fontWeight: FontWeight.w500),
-          ),
-          const Icon(
-            FontAwesomeIcons.chevronRight,
-            size: 20,
-          )
-        ],
-      ),
     );
   }
 }

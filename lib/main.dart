@@ -15,8 +15,6 @@ void main() async {
   final settings = await Hive.openBox('settings');
   bool isLightTheme = settings.get('isLightTheme') ?? false;
 
-  print(isLightTheme);
-
   runApp(ChangeNotifierProvider<ThemeProvider>(
     create: (_) => ThemeProvider(isLightTheme: isLightTheme),
     child: const AppStart(),
