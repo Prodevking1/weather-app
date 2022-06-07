@@ -35,7 +35,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             SizedBox(
               height: 45.0,
             ),
-            tempContainer(context, size.width, themeProvider)
+            tempContainer(context, size.width, themeProvider),
+            SizedBox(
+              height: 15.0,
+            ),
+            infoContainer(context),
           ],
         ),
       ),
@@ -95,9 +99,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   border: InputBorder.none,
                   hintText: 'Ouagadougou',
-                  hintStyle:
-                      headingStyle.copyWith(fontWeight: FontWeight.bold)),
-              style: headingStyle.copyWith(fontWeight: FontWeight.bold),
+                  hintStyle: AppStyle.headingStyle
+                      .copyWith(fontWeight: FontWeight.bold)),
+              style:
+                  AppStyle.headingStyle.copyWith(fontWeight: FontWeight.bold),
               keyboardType: TextInputType.text,
             ),
           ),
@@ -154,7 +159,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: Center(
               child: Text(
             TodayDate().getTodayDate(),
-            style: headingStyle.copyWith(
+            style: AppStyle.headingStyle.copyWith(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
                 color:
@@ -195,16 +200,88 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           textScaleFactor: 2.0,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontFamily: 'Ubuntu',
           ),
         ),
       ),
       Padding(
         padding: EdgeInsets.only(top: width / 3.5, left: width / 2.5),
-        child: Lottie.network(
-            'https://assets6.lottiefiles.com/packages/lf20_64okjrr7.json',
-            width: 220.0),
+        child: Lottie.asset(RessourcesPath.sunnyLottie, width: 220.0),
       ),
     ]);
   }
+
+  Widget infoContainer(context) {
+    return Container(
+        height: 150,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xffc95edb).withOpacity(0.2),
+                Color(0xff8bdafe).withOpacity(0.2)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(20.0),
+            color: HexColor(AppColors.primaryCol)),
+        child: Padding(
+          padding: EdgeInsets.all(25),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  child: SizedBox(
+                      child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.wind,
+                      color: HexColor(AppColors.weatherICons)),
+                  Text('9km/h', style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Wind',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: HexColor(AppColors.greyCol))),
+                ],
+              ))),
+              Expanded(
+                  child: SizedBox(
+                      child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.droplet,
+                      color: HexColor(AppColors.weatherICons)),
+                  Text('30%',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Text(
+                    'Humidity',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: HexColor(AppColors.greyCol)),
+                  ),
+                ],
+              ))),
+              Expanded(
+                  child: SizedBox(
+                      child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.minimize,
+                      color: HexColor(AppColors.weatherICons)),
+                  Text(
+                    '1008',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text('Pressure',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: HexColor(AppColors.greyCol))),
+                ],
+              ))),
+            ],
+          ),
+        ));
+  }
+
+  Widget sunContainer() {}
 }
