@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:switcher/core/switcher_size.dart';
 import 'package:switcher/switcher.dart';
-import 'package:weather_app/models/date_model.dart';
 import 'package:weather_app/providers/theme_provider.dart';
+import 'package:weather_app/data/models/bodies/date_model.dart';
+
 import 'package:weather_app/utils/app_constants.dart';
 import 'package:weather_app/views/week_forecast.dart';
 
@@ -32,7 +34,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
             child: Column(
               children: <Widget>[
                 const SizedBox(

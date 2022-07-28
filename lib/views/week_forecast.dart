@@ -8,7 +8,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:switcher/core/switcher_size.dart';
 import 'package:switcher/switcher.dart';
-import 'package:weather_app/models/date_model.dart';
+import 'package:weather_app/data/models/bodies/date_model.dart';
 import 'package:weather_app/providers/theme_provider.dart';
 import 'package:weather_app/utils/app_constants.dart';
 

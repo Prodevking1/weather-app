@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const String baseUrl = "https://api.openweathermap.org/data/2.5/";
+  static const String apiKey = "91f20fef6924822ab6748495265321b5";
+  static const String getReport = "/api/meteo/";
   static String primaryCol = '#EE82EE';
   static String whiteCol = '#FFFFFF';
   static String blackCol = '#000000';
